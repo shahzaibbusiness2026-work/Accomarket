@@ -44,6 +44,7 @@ export interface Account {
   subreddit?: string;
   bannerTheme?: "volcano" | "cosmic" | "bull_growth" | "mountains" | "synthwave" | "candlestick";
   description?: string;
+  activityStatus?: string;
   communities: CommunityItem[];
   badges: BadgeItem[];
   trajectory: TrajectoryPoint[];
