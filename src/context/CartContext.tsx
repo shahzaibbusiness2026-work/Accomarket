@@ -120,7 +120,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
       const storedInventory = localStorage.getItem("accomarket_inventory");
       if (storedInventory) {
-        setAccounts(JSON.parse(storedInventory));
+        const parsed: Account[] = JSON.parse(storedInventory);
+        // Merge with KARMA_ACCOUNTS to ensure bannerTheme, subreddit, and descriptions are updated
+        const merged = parsed.map((p) => {
+          const fresh = KARMA_ACCOUNTS.find((k) => k.id === p.id);
+          return fresh ? { ...fresh, ...p, bannerTheme: fresh.bannerTheme, subreddit: fresh.subreddit, description: fresh.description, badgeType: fresh.badgeType } : p;
+        });
+        setAccounts(merged);
       }
 
       const storedOrders = localStorage.getItem("accomarket_all_orders");

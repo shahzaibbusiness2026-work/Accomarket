@@ -37,10 +37,13 @@ export interface Account {
   postsCount: number;
   commentsCount: number;
   badge: string;
-  badgeType: "verified" | "best-value";
+  badgeType: "verified" | "best-value" | "premium";
   emailStatus: string;
   shadowbanAudit: string;
   tags: string[];
+  subreddit?: string;
+  bannerTheme?: "volcano" | "cosmic" | "bull_growth" | "mountains" | "synthwave" | "candlestick";
+  description?: string;
   communities: CommunityItem[];
   badges: BadgeItem[];
   trajectory: TrajectoryPoint[];
